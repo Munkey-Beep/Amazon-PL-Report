@@ -512,17 +512,21 @@ st.caption('Upload your 3 Amazon reports and download a complete multi-tab P&L w
 
 with st.expander('📂 Where to download your files from Amazon Seller Central'):
     st.markdown("""
-**① All Orders Report** — *Reports → Order Reports → New Order Report*
-Request a report for your month's date range and download the `.txt` file.
+**① All Orders Report** — *Reports → Fulfilment → Sales → All Orders*
+Set the date range to the exact first and last days of your target month (e.g. 1–31 May). Download the tab-delimited `.txt` file. Generates in 1–3 minutes — pull this one first.
 
-**② Transaction Report** — *Reports → Payments → Transaction View*
-Set the date range to your month, then click **Download** (top right of the table).
+**② Transaction Reports** — *Reports → Reports Repository → Request Report → Type: Transaction*
+You need **two** Transaction reports per monthly P&L:
+- One covering your **target month** (e.g. 1–31 May)
+- One covering the **first ~2 weeks of the following month** (e.g. 1–14 June) — this captures late-settling orders ("slippage")
 
-**③ Deferred Transactions Report** — *Reports → Payments → Transaction View*
-Change the settlement dropdown to the **next settlement period** after your month, then download that CSV.
-This captures orders placed in your month but paid out in the following settlement.
+> ⚠️ **These can take up to 24 hours to generate** — request them at least one day before you plan to build.
+> ⚠️ **Don't trust the filename** — Amazon sometimes mislabels the date range. Open the file and verify the actual first and last dates before using it.
 
-> **Tip:** The All Orders Report filters by *order date*. The Transaction and Deferred reports filter by *settlement/payment date* — so Deferred is always the settlement period after your target month.
+**③ Deferred Transactions Snapshot** — *Payments dashboard → Deferred Transactions tab → Download CSV*
+Pull this **on the same day you build the P&L** — it's a live snapshot of funds held in Amazon's 7-day reserve, and it changes daily.
+
+> **Timing rule:** Don't pull before the **15th of the month after** your target month — pulling earlier risks missing 20–40% of month-end fees.
 """)
 
 with st.form('pnl_form'):
@@ -535,7 +539,7 @@ with st.form('pnl_form'):
 
     st.markdown('---')
     f_orders = st.file_uploader('① All Orders Report (.txt, tab-delimited)', type=['txt','csv'])
-    f_tx     = st.file_uploader('② Transaction Report (.csv)',               type=['csv'])
+    f_tx     = st.file_uploader('② Transaction Report — target month (.csv)', type=['csv'])
     f_def    = st.file_uploader('③ Deferred Transactions Report (.csv)',     type=['csv'])
 
     submitted = st.form_submit_button('Build P&L', type='primary', use_container_width=True)
