@@ -541,7 +541,7 @@ if submitted:
                 buf.seek(0)
 
                 month_name = MONTH_NAMES[month]
-                filename   = f'CSS_{month_name}_{year}_PnL.xlsx'
+                filename   = f'Amazon P&L - {month_name} - {year}.xlsx'
 
                 st.success('✅ Workbook ready!')
 
