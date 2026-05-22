@@ -506,8 +506,8 @@ def build_workbook(year, month, all_orders, transactions, deferred):
 
 
 # ── Streamlit UI ──────────────────────────────────────────────────────────────
-st.set_page_config(page_title='CSS Amazon P&L Builder', page_icon='📦', layout='centered')
-st.title('📦 CSS Amazon P&L Builder')
+st.set_page_config(page_title='Amazon P&L Builder', page_icon='📦', layout='centered')
+st.title('📦 Amazon P&L Builder')
 st.caption('Upload your 3 Amazon reports and download a complete multi-tab P&L workbook.')
 
 with st.form('pnl_form'):
@@ -573,4 +573,4 @@ if submitted:
                 st.exception(e)
 
 st.markdown('---')
-st.caption('Built for CSS Amazon UK · [How to deploy your own copy](https://share.streamlit.io)')
+st.caption('Build your P&L reports')
