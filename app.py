@@ -510,6 +510,21 @@ st.set_page_config(page_title='Amazon P&L Builder', page_icon='📦', layout='ce
 st.title('📦 Amazon P&L Builder')
 st.caption('Upload your 3 Amazon reports and download a complete multi-tab P&L workbook.')
 
+with st.expander('📂 Where to download your files from Amazon Seller Central'):
+    st.markdown("""
+**① All Orders Report** — *Reports → Order Reports → New Order Report*
+Request a report for your month's date range and download the `.txt` file.
+
+**② Transaction Report** — *Reports → Payments → Transaction View*
+Set the date range to your month, then click **Download** (top right of the table).
+
+**③ Deferred Transactions Report** — *Reports → Payments → Transaction View*
+Change the settlement dropdown to the **next settlement period** after your month, then download that CSV.
+This captures orders placed in your month but paid out in the following settlement.
+
+> **Tip:** The All Orders Report filters by *order date*. The Transaction and Deferred reports filter by *settlement/payment date* — so Deferred is always the settlement period after your target month.
+""")
+
 with st.form('pnl_form'):
     col1, col2 = st.columns(2)
     with col1:
