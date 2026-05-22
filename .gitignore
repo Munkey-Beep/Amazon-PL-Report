@@ -1,0 +1,18 @@
+# Excel outputs
+*.xlsx
+*.xls
+
+# Raw Amazon data files (keep out of repo)
+AllOrders*.txt
+CSS_*_AllOrders*
+*Transaction*
+*Hold*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# macOS
+.DS_Store
